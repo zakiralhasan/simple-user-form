@@ -8,7 +8,8 @@ export const AuthContext = createContext();
 const contextAuth = getAuth(app);
 
 const UserContext = ({children}) => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({})//state for user info.
+    const [loading, setLoading] = useState(true)//state for privet route loading
 
     //creat new user at firebase
     const creatUser = (email, password) => {
@@ -29,6 +30,7 @@ const UserContext = ({children}) => {
     useEffect(() => {
         const exit = onAuthStateChanged(contextAuth, currentUser => {
             setUser(currentUser)
+            setLoading(false)
         })
         return () => exit();
     },[])
@@ -43,7 +45,7 @@ const UserContext = ({children}) => {
         return sendPasswordResetEmail(contextAuth, email)
     };
 
-    const authInfo = {user, creatUser, userVerification, userSignIn, logOut, resetPassword};
+    const authInfo = {user, loading, setLoading, creatUser, userVerification, userSignIn, logOut, resetPassword};
 
     return (
         <AuthContext.Provider value={authInfo}>

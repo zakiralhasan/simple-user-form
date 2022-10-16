@@ -5,10 +5,12 @@ import RecoverPasswordPage from "../RecoverPasswordPage/RecoverPasswordPage";
 import RegisterPage from "../RegisterPage/RegisterPage";
 import About from "../About/About";
 import Layout from "../../Layout/Layout";
+import PrivateRoute from "../../PrivateRoute/PrivateRoute";
 
-export const router = createBrowserRouter([
+
+ const router = createBrowserRouter([
     {path:'/', element: <Layout></Layout>, children: [
-        {path:'/', element:<Home></Home>},
+        {path:'/', element:<PrivateRoute><Home></Home></PrivateRoute>},
         {path:'login', element: <LoginPage></LoginPage>},
         {path:'registration', element: <RegisterPage></RegisterPage>},
         {path:'about', element: <About></About>},
@@ -16,3 +18,4 @@ export const router = createBrowserRouter([
     ]},
 ])
 
+export default router;

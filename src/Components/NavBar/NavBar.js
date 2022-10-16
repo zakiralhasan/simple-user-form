@@ -27,7 +27,7 @@ const NavBar = () => {
                     <NavLink className='mr-4' to='/about'>About</NavLink>
                     {user?.email && <p>Welcome: {user?.email}</p>}
                     {user?.email? 
-                    <button onClick={signOutUser} className='bg-blue-50 text-red-500 px-1 rounded border border-white ml-2'>Logout</button>: <button onClick={signOutUser} className='bg-blue-50 text-red-500 px-1 rounded border border-white ml-2'>Login</button>}
+                    <button onClick={signOutUser} className='bg-blue-50 text-red-500 px-1 rounded border border-white ml-2'>Logout</button>: <button className='bg-blue-50 text-red-500 px-1 rounded border border-white ml-2'>Login</button>}
                 </nav>
             </div>
         </div>
