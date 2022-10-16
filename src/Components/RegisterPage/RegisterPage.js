@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {createUserWithEmailAndPassword, getAuth, sendEmailVerification} from 'firebase/auth'
-import {app} from '../../firebase/firebase.init'
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/UserContext';
 
-const auth = getAuth(app)
+
 const RegisterPage = () => {
+    //used context API destucturing method
+    const {creatUser, userVerification} = useContext(AuthContext);
+
+
     // const [userName, setUserName] = useState('')
     const [userEmail, setUserEmail] = useState('')
     const [userPassword, setUserPassword] = useState('')
@@ -16,7 +19,7 @@ const RegisterPage = () => {
 
     //function for creat new user
     const creatNewUser = () => {
-        createUserWithEmailAndPassword(auth, userEmail, userPassword)
+        creatUser(userEmail, userPassword)//used context API
         .then(result => {
             const user = result.user;
             console.log(user)
@@ -26,7 +29,7 @@ const RegisterPage = () => {
 
     //function for verify new user's email address
     const userEmailVerification = () => {
-        sendEmailVerification(auth.currentUser)
+        userVerification() //used context API
         .then(() => {
             toast.info('A verification email has bee sent to your email address!')
         })

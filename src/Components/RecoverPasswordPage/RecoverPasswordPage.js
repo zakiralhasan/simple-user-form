@@ -1,19 +1,19 @@
-import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { app } from '../../firebase/firebase.init';
+import { AuthContext } from '../../Context/UserContext';
 
 
-const auth = getAuth(app);
 const RecoverPasswordPage = () => {
+    //used context API destucturing method
+    const {resetPassword} = useContext(AuthContext)
 
     const [userEmail, setUserEmail] = useState('')
     const getUserEmail = (e) => setUserEmail(e.target.value);
 
     //function for reset password through email
     const resetUserPassword = () => {
-        sendPasswordResetEmail(auth, userEmail)
+        resetPassword(userEmail) //used context API
         .then(() => {
             toast.info('A link has been sent to your email address.')
 

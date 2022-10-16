@@ -1,14 +1,14 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAuth } from 'firebase/auth';
-import { app } from '../../firebase/firebase.init';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/UserContext';
 
 
 
-const auth = getAuth(app)
 const LoginPage = () => {
+    //used context API destucturing method
+    const {userSignIn} = useContext(AuthContext)
+
     const [userEmail, setUserEmail] = useState('')
     const [userPassword, setUserPassword] = useState('')
 
@@ -16,7 +16,7 @@ const LoginPage = () => {
     const getUserPassword = (e) => setUserPassword(e.target.value);
 
     const loginToUser = () => {
-        signInWithEmailAndPassword(auth, userEmail, userPassword)
+        userSignIn(userEmail, userPassword) //used context API
         .then(result => {
             const user = result.user;
             console.log(user)
