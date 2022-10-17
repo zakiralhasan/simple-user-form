@@ -13,7 +13,7 @@ import PrivateRoute from "../../PrivateRoute/PrivateRoute";
         {path:'/', element:<PrivateRoute><Home></Home></PrivateRoute>},
         {path:'login', element: <LoginPage></LoginPage>},
         {path:'registration', element: <RegisterPage></RegisterPage>},
-        {path:'about', element: <About></About>},
+        {path:'about', element: <PrivateRoute><About></About></PrivateRoute>},
         {path:'recover', element: <RecoverPasswordPage></RecoverPasswordPage>}, 
     ]},
 ])

@@ -16,11 +16,11 @@ const NavBar = () => {
     }
     return (
         <div className='bg-blue-100 '>
-            <div className='flex items-center'>
-                <div className='basis-1/3'>
-                    <h1>Login Form</h1>
+            <div className='flex items-center '>
+                <div className='w-1/2 mx-auto'>
+                    <h1 className='text-3xl font-semibold px-4'>Login Form</h1>
                 </div>
-                <nav className='basis-2/3 w-full flex py-6'>
+                <nav className=' w-full flex justify-end px-4 py-6 '>
                     <NavLink className='mr-4' to='/'>Home</NavLink>
                     <NavLink className='mr-4' to='/login'>Login</NavLink>
                     <NavLink className='mr-4' to='/registration'>Registration</NavLink>
